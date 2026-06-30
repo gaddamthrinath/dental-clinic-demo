@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const photos = [
+  { src: '/images/hero.png', caption: 'Our Welcoming Reception', tag: 'Clinic' },
+  { src: '/images/treatment-room.png', caption: 'State-of-the-Art Treatment Room', tag: 'Facilities' },
+  { src: '/images/teeth-whitening.png', caption: 'Teeth Whitening Results', tag: 'Results' },
+  { src: '/images/xray.png', caption: 'Advanced Digital Imaging', tag: 'Technology' },
+  { src: '/images/happy-patient.png', caption: 'Happy Patient After Treatment', tag: 'Patients' },
+  { src: '/images/team.png', caption: 'Our Expert Team', tag: 'Team' },
+  { src: '/images/doctor1.png', caption: 'Dr. Sarah Johnson', tag: 'Team' },
+  { src: '/images/doctor2.png', caption: 'Dr. Michael Chen', tag: 'Team' },
+];
+
+const beforeAfter = [
+  { label: 'Teeth Whitening', before: 'Stained, yellowish teeth', after: '8 shades whiter smile' },
+  { label: 'Orthodontic Treatment', before: 'Crowded, misaligned teeth', after: 'Straight, beautiful smile' },
+  { label: 'Smile Makeover', before: 'Worn, uneven teeth', after: 'Full smile transformation' },
+];
+---
+<Layout title="Gallery" description="Browse our clinic gallery — before & after results, clinic facilities, and happy patient photos at Bright Smiles Dental.">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Gallery</span></div>
+      <h1>Our Gallery</h1>
+      <p>See our clinic, meet our team, and witness the smile transformations we're proud of.</p>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <section class="section" style="padding-bottom:0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Photo Gallery</div>
+        <h2>A Glimpse Inside Bright Smiles</h2>
+        <div class="divider"></div>
+        <p>From our modern facilities to the smiles we create — take a tour of our clinic.</p>
+      </div>
+      <div class="gallery-tabs" id="gallery-tabs">
+        {['All', 'Clinic', 'Facilities', 'Technology', 'Team', 'Results', 'Patients'].map((tab, i) => (
+          <button class={`gallery-tab ${i===0?'active':''}`} data-tab={tab} id={`tab-${tab.toLowerCase()}`}>{tab}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GRID -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div class="photo-grid" id="photo-grid">
+        {photos.map((photo, idx) => (
+          <div class="photo-card" data-tag={photo.tag} style={`animation-delay:${idx * 0.08}s`}>
+            <div class="photo-wrap">
+              <img src={photo.src} alt={photo.caption} class="photo-img" loading="lazy" />
+              <div class="photo-overlay">
+                <span class="photo-caption">{photo.caption}</span>
+                <span class="photo-tag-badge">{photo.tag}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Transformations</div>
+        <h2>Before & After Results</h2>
+        <div class="divider"></div>
+        <p>Real results from real patients — see the power of modern dentistry.</p>
+      </div>
+      <div class="grid-3">
+        {beforeAfter.map(item => (
+          <div class="ba-card card">
+            <div class="ba-header">
+              <span class="ba-icon">✨</span>
+              <h4>{item.label}</h4>
+            </div>
+            <div class="ba-compare">
+              <div class="ba-side ba-before">
+                <span class="ba-label">Before</span>
+                <p>{item.before}</p>
+              </div>
+              <div class="ba-arrow">→</div>
+              <div class="ba-side ba-after">
+                <span class="ba-label">After</span>
+                <p>{item.after}</p>
+              </div>
+            </div>
+            <a href="/contact#appointment" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:1rem;font-size:0.88rem;">Get This Treatment</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO CTA -->
+  <section class="section section--dark" style="text-align:center;">
+    <div class="container">
+      <h2>Want to See More?</h2>
+      <p style="max-width:500px;margin:1rem auto 2rem;">Visit us in person for a free clinic tour, or book your first appointment today!</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="/contact#appointment" class="btn btn--white" id="gallery-book-btn">📅 Book Appointment</a>
+        <a href="/location" class="btn btn--outline" style="border-color:rgba(255,255,255,0.5);color:white;">📍 Find Us</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.gallery-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; justify-content: center; }
+.gallery-tab {
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+  transition: var(--transition);
+  cursor: pointer;
+  background: white;
+}
+.gallery-tab:hover, .gallery-tab.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.photo-card { border-radius: var(--radius-md); overflow: hidden; animation: fadeInUp 0.6s ease both; }
+.photo-wrap { position: relative; aspect-ratio: 1; overflow: hidden; }
+.photo-img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-slow); }
+.photo-card:hover .photo-img { transform: scale(1.08); }
+.photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(11,110,138,0.85) 0%, transparent 50%);
+  opacity: 0;
+  transition: var(--transition);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem;
+}
+.photo-card:hover .photo-overlay { opacity: 1; }
+.photo-caption { color: white; font-weight: 600; font-size: 0.9rem; }
+.photo-tag-badge { font-size: 0.75rem; color: var(--primary-light); font-weight: 600; margin-top: 0.2rem; }
+.photo-card.hidden { display: none; }
+
+.ba-card { padding: 1.75rem; }
+.ba-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+.ba-icon { font-size: 1.5rem; }
+.ba-header h4 { margin: 0; }
+.ba-compare { display: flex; align-items: center; gap: 0.75rem; }
+.ba-side { flex: 1; padding: 1rem; border-radius: var(--radius-sm); }
+.ba-before { background: rgba(229,62,62,0.08); border: 1px solid rgba(229,62,62,0.2); }
+.ba-after { background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); }
+.ba-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.ba-before .ba-label { color: #E53E3E; }
+.ba-after .ba-label { color: #0a8a6d; }
+.ba-side p { font-size: 0.85rem; color: var(--text); }
+.ba-arrow { color: var(--primary); font-size: 1.2rem; font-weight: 700; flex-shrink: 0; }
+
+@media (max-width: 1024px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('.gallery-tab');
+  const photos = document.querySelectorAll('.photo-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = (tab as HTMLElement).dataset.tab;
+      photos.forEach(photo => {
+        const tag = (photo as HTMLElement).dataset.tag;
+        if (filter === 'All' || tag === filter) {
+          photo.classList.remove('hidden');
+        } else {
+          photo.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

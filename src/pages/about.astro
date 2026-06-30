@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="About Us" description="Learn about Bright Smiles Dental Clinic — our story, our expert team, and our commitment to exceptional dental care in Bengaluru, India.">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">Home</a> <span>›</span> <span>About Us</span>
+      </div>
+      <h1>About Bright Smiles</h1>
+      <p>Two decades of compassionate dental care, guided by excellence and patient trust.</p>
+    </div>
+  </div>
+
+  <!-- OUR STORY -->
+  <section class="section">
+    <div class="container about-split">
+      <div>
+        <img src="/images/team.png" alt="Our team" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
+      </div>
+      <div>
+        <div class="section-tag">Our Story</div>
+        <h2 class="font-serif">A Passion for Smiles Since <em style="color:var(--primary)">2005</em></h2>
+        <div class="divider divider--left"></div>
+        <p>Bright Smiles Dental Clinic was founded by Dr. Sarah Johnson with a simple but powerful vision: to create a dental clinic where patients feel safe, heard, and genuinely cared for.</p>
+        <p style="margin-top:1rem;">Starting with a single treatment room, we have grown into a full-service dental centre with 12 specialists and state-of-the-art facilities — yet our values remain unchanged: compassion first, excellence always.</p>
+        <p style="margin-top:1rem;">We serve over 5,000 patients annually and have been recognized as one of India's top dental clinics for five consecutive years.</p>
+        <div class="story-values">
+          {['Patient-First Philosophy', 'Evidence-Based Care', 'Continuous Innovation', 'Community Commitment'].map(v => (
+            <div class="value-item">
+              <span class="value-check">✓</span>
+              <span>{v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="stats-grid">
+        {[
+          { number: '5000+', label: 'Happy Patients' },
+          { number: '20+', label: 'Years of Excellence' },
+          { number: '12', label: 'Dental Specialists' },
+          { number: '98%', label: 'Patient Satisfaction' },
+          { number: '15+', label: 'Services Offered' },
+          { number: '5★', label: 'Average Rating' },
+        ].map(s => (
+          <div class="stat-box">
+            <div class="stat-num-lg">{s.number}</div>
+            <div class="stat-lbl">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Experts</div>
+        <h2>Meet Our Dental Team</h2>
+        <div class="divider"></div>
+        <p>Our skilled, compassionate dentists are dedicated to making every visit a positive experience.</p>
+      </div>
+      <div class="grid-2 team-grid">
+        {[
+          { img: '/images/doctor1.png', name: 'Dr. Priya Sharma', role: 'Principal Dentist & Cosmetic Specialist', bio: 'BDS (Manipal), MDS Prosthodontics. Over 20 years of experience with a focus on smile transformations and patient comfort.', specialties: ['Cosmetic Dentistry', 'Smile Design', 'Teeth Whitening'] },
+          { img: '/images/doctor2.png', name: 'Dr. Rohan Mehta', role: 'Orthodontist & Implant Specialist', bio: 'BDS (RGUHS), MDS Orthodontics. Award-winning specialist in braces, Invisalign, and dental implant procedures.', specialties: ['Orthodontics', 'Dental Implants', 'Invisalign'] },
+        ].map(doc => (
+          <div class="doctor-card card">
+            <div class="doctor-img-wrap">
+              <img src={doc.img} alt={doc.name} class="doctor-img" />
+            </div>
+            <div class="doctor-body">
+              <h3>{doc.name}</h3>
+              <p class="doctor-role">{doc.role}</p>
+              <p class="doctor-bio">{doc.bio}</p>
+              <div class="doctor-specialties">
+                {doc.specialties.map(s => (
+                  <span class="badge badge--blue">{s}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HAPPY PATIENT -->
+  <section class="section">
+    <div class="container about-split">
+      <div class="order-text">
+        <div class="section-tag">Patient Experience</div>
+        <h2>Putting Patients <em style="color:var(--primary)">First</em>, Always</h2>
+        <div class="divider divider--left"></div>
+        <p>We know dental visits can feel daunting. That's why every detail of our clinic is designed to make you feel relaxed — from our welcoming reception to our gentle hands-on care.</p>
+        <p style="margin-top:1rem;">We offer sedation options, child-friendly treatment rooms, and a transparent pricing policy so there are never any surprises.</p>
+        <a href="/contact#appointment" class="btn btn--primary" style="margin-top:2rem;">Book Your Visit Today</a>
+      </div>
+      <div>
+        <img src="/images/happy-patient.png" alt="Happy patient at Bright Smiles" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCREDITATIONS -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Trust & Quality</div>
+        <h2>Accreditations & Memberships</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="accred-grid">
+        {[
+          { abbr: 'IDA',  name: 'Indian Dental Association',        desc: 'Full member since 2005' },
+          { abbr: 'ISOI', name: 'Indian Society of Oral Implantology', desc: 'Certified member' },
+          { abbr: 'NMC',  name: 'National Medical Commission',       desc: 'NMC registered practitioners' },
+          { abbr: 'ISO',  name: 'ISO 9001:2015 Certified',           desc: 'Quality management certified' },
+        ].map(a => (
+          <div class="accred-card card">
+            <span class="accred-abbr">{a.abbr}</span>
+            <strong>{a.name}</strong>
+            <span>{a.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.story-values { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.value-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; font-weight: 500; color: var(--text); }
+.value-check { width: 24px; height: 24px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); border-radius: 50%; display:flex;align-items:center;justify-content:center;color:white;font-size:0.75rem;flex-shrink:0; }
+.stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; text-align: center; }
+.stat-box { padding: 1.5rem 1rem; }
+.stat-num-lg { font-size: 2.4rem; font-weight: 900; color: var(--primary-light); line-height: 1; }
+.stat-lbl { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 0.4rem; }
+.team-grid { gap: 2rem; }
+.doctor-card { display: flex; gap: 0; flex-direction: column; }
+.doctor-img-wrap { aspect-ratio: 4/3; overflow: hidden; }
+.doctor-img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: var(--transition-slow); }
+.doctor-card:hover .doctor-img { transform: scale(1.04); }
+.doctor-body { padding: 1.75rem; }
+.doctor-role { color: var(--primary); font-weight: 600; font-size: 0.9rem; margin: 0.35rem 0 0.75rem; }
+.doctor-bio { font-size: 0.9rem; margin-bottom: 1rem; }
+.doctor-specialties { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.accred-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.accred-card { padding: 2rem; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
+.accred-abbr { display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--primary-pale);color:var(--primary);border-radius:var(--radius-sm);font-weight:800;font-size:0.8rem;letter-spacing:0.05em;border:1px solid rgba(60,131,246,0.2); }
+.accred-card strong { color: var(--text); font-size: 0.9rem; }
+.accred-card span   { color: var(--text-muted); font-size: 0.82rem; }
+
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .accred-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .about-split { grid-template-columns: 1fr; gap: 2rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .accred-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>

@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Page Not Found" description="The page you're looking for doesn't exist.">
+  <div class="not-found-page">
+    <div class="container" style="text-align:center;">
+      <div class="nf-icon">🦷</div>
+      <h1>404</h1>
+      <h2>Oops! Page Not Found</h2>
+      <p>Looks like this page has gone missing — just like a lost tooth! Don't worry, we'll help you find your way back.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+        <a href="/" class="btn btn--primary">🏠 Back to Home</a>
+        <a href="/contact" class="btn btn--outline">📞 Contact Us</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+<style>
+.not-found-page { min-height: 80vh; display:flex; align-items:center; justify-content:center; padding: var(--nav-height) 1rem 4rem; }
+.nf-icon { font-size: 4rem; margin-bottom: 1rem; animation: float 2s ease-in-out infinite; }
+h1 { font-size: 6rem; line-height:1; background:linear-gradient(135deg,var(--primary),var(--primary-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+h2 { margin: 0.5rem 0 1rem; }
+p { max-width: 420px; margin: 0 auto; }
+</style>

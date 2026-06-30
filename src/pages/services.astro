@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    id: 'general',
+    category: 'General Dentistry',
+    abbr: 'GD',
+    color: '#3C83F6',
+    items: [
+      { name: 'Dental Check-Up & Cleaning', desc: 'Comprehensive oral examination with professional cleaning to maintain healthy teeth and gums.', price: 'From ₹500' },
+      { name: 'Tooth Fillings', desc: 'Tooth-coloured composite fillings that blend seamlessly with your natural teeth.', price: 'From ₹800' },
+      { name: 'Root Canal Treatment', desc: 'Pain-free endodontic treatment to save infected teeth and relieve discomfort.', price: 'From ₹3,500' },
+      { name: 'Tooth Extraction', desc: 'Simple and surgical extractions performed with utmost care and comfort.', price: 'From ₹600' },
+    ]
+  },
+  {
+    id: 'cosmetic',
+    category: 'Cosmetic Dentistry',
+    abbr: 'CD',
+    color: '#0EA5E9',
+    items: [
+      { name: 'Teeth Whitening', desc: 'Professional in-chair and take-home whitening for a brilliantly brighter smile.', price: 'From ₹4,000' },
+      { name: 'Dental Veneers', desc: 'Ultra-thin porcelain shells that transform the shape, size, and color of your teeth.', price: 'From ₹6,000/tooth' },
+      { name: 'Smile Makeover', desc: 'A personalized combination of treatments to completely redesign your smile.', price: 'Custom Quote' },
+      { name: 'Composite Bonding', desc: 'Affordable cosmetic improvement for chipped, cracked, or gapped teeth.', price: 'From ₹2,000' },
+    ]
+  },
+  {
+    id: 'orthodontics',
+    category: 'Orthodontics',
+    abbr: 'OR',
+    color: '#6366F1',
+    items: [
+      { name: 'Traditional Braces', desc: 'Metal or ceramic braces for effective teeth straightening at all ages.', price: 'From ₹25,000' },
+      { name: 'Invisalign', desc: 'Clear, removable aligners for a discreet, comfortable orthodontic experience.', price: 'From ₹80,000' },
+      { name: 'Retainers', desc: 'Custom retainers to maintain your perfect smile after treatment.', price: 'From ₹2,500' },
+    ]
+  },
+  {
+    id: 'implants',
+    category: 'Dental Implants',
+    abbr: 'DI',
+    color: '#F59E0B',
+    items: [
+      { name: 'Single Tooth Implant', desc: 'Permanent, natural-feeling tooth replacement with titanium implant and crown.', price: 'From ₹25,000' },
+      { name: 'All-on-4 Implants', desc: 'Full arch restoration using just four implants for a complete smile transformation.', price: 'From ₹1,20,000' },
+      { name: 'Implant-Supported Dentures', desc: 'Secure, comfortable dentures anchored by dental implants for improved function.', price: 'From ₹60,000' },
+    ]
+  },
+  {
+    id: 'xray',
+    category: 'Dental Imaging',
+    abbr: 'DX',
+    color: '#8B5CF6',
+    items: [
+      { name: 'Digital X-Rays', desc: 'Low-radiation digital radiographs for accurate diagnosis and treatment planning.', price: 'From ₹300' },
+      { name: 'Panoramic X-Ray (OPG)', desc: 'Full-mouth panoramic imaging for comprehensive oral assessment.', price: 'From ₹800' },
+      { name: '3D CBCT Scan', desc: 'Three-dimensional cone beam CT scanning for implant and complex case planning.', price: 'From ₹2,500' },
+    ]
+  },
+  {
+    id: 'emergency',
+    category: 'Emergency Dental Care',
+    abbr: 'ER',
+    color: '#EF4444',
+    items: [
+      { name: 'Emergency Consultation', desc: 'Same-day appointments for severe toothache, broken teeth, or dental trauma.', price: 'From ₹600' },
+      { name: 'Knocked-Out Tooth', desc: 'Immediate re-implantation and stabilisation for avulsed teeth.', price: 'From ₹2,000' },
+      { name: 'Dental Abscess', desc: 'Urgent treatment for infections to relieve pain and prevent spread.', price: 'From ₹1,200' },
+    ]
+  },
+];
+---
+<Layout title="Our Services" description="Comprehensive dental services at Bright Smiles — from general dentistry to smile makeovers, implants, and emergency care.">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Services</span></div>
+      <h1>Our Dental Services</h1>
+      <p>Comprehensive care for every smile — from prevention to transformation.</p>
+    </div>
+  </div>
+
+  <!-- SERVICE NAV -->
+  <div class="service-nav-bar">
+    <div class="container">
+      <div class="service-nav-pills">
+        {services.map(s => (
+          <a href={`#${s.id}`} class="service-pill">{s.category}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="services-page">
+    {services.map((cat, i) => (
+      <section id={cat.id} class={`section ${i % 2 === 1 ? 'section--alt' : ''}`}>
+        <div class="container">
+          <div class="cat-header">
+            <div class="cat-icon" style={`background:${cat.color}15;color:${cat.color}`}>{cat.abbr}</div>
+            <div>
+              <div class="section-tag">{cat.category}</div>
+              <h2>{cat.category}</h2>
+              <div class="divider divider--left"></div>
+            </div>
+          </div>
+          <div class="service-items-grid">
+            {cat.items.map(item => (
+              <div class="service-item card">
+                <div class="service-item-body">
+                  <h4>{item.name}</h4>
+                  <p>{item.desc}</p>
+                </div>
+                <div class="service-item-footer">
+                  <span class="service-price">{item.price}</span>
+                  <a href="/contact#appointment" class="btn btn--outline" style="padding:0.55rem 1.2rem;font-size:0.85rem;">Book Now</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <section class="section section--dark" style="text-align:center;">
+    <div class="container">
+      <h2>Not Sure Which Service You Need?</h2>
+      <p style="max-width:500px;margin:1rem auto 2rem;">Book a free consultation and our experts will guide you to the perfect treatment plan.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="/contact#appointment" class="btn btn--white" id="services-book-btn">Book Free Consultation</a>
+        <a href="https://wa.me/919876543210" target="_blank" class="btn btn--whatsapp" id="services-wa-btn">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.service-nav-bar {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 50;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  box-shadow: var(--shadow-sm);
+}
+.service-nav-pills { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 4px; }
+.service-nav-pills::-webkit-scrollbar { height: 2px; }
+.service-nav-pills::-webkit-scrollbar-track { background: transparent; }
+.service-nav-pills::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
+.service-pill {
+  white-space: nowrap;
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.service-pill:hover { background: var(--primary); border-color: var(--primary); color: white; }
+.cat-header { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 2.5rem; }
+.cat-icon { width: 52px; height: 52px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; flex-shrink: 0; margin-top: 0.2rem; }
+.service-items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+.service-item { padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.service-item-body h4 { margin-bottom: 0.5rem; }
+.service-item-body p { font-size: 0.9rem; }
+.service-item-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; }
+.service-price { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+</style>
