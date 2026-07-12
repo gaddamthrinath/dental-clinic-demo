@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="/images/hero.png" alt="Bright Smiles Dental Clinic" class="hero-img" />
+      <img src={`${import.meta.env.BASE_URL}images/hero.png`} alt="Bright Smiles Dental Clinic" class="hero-img" />
       <div class="hero-overlay"></div>
     </div>
     <div class="container hero-content">
@@ -73,9 +73,9 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="grid-3">
         {[
-          { img: '/images/teeth-whitening.png', title: 'Teeth Whitening', desc: 'Professional whitening treatments for a brilliantly brighter smile in just one visit.', href: '/services#whitening' },
-          { img: '/images/treatment-room.png',  title: 'Dental Implants', desc: 'Permanent, natural-looking tooth replacements that restore your smile and confidence.', href: '/services#implants' },
-          { img: '/images/xray.png',            title: 'Digital X-Rays',  desc: 'State-of-the-art digital imaging for accurate diagnosis with minimal radiation.', href: '/services#xray' },
+          { img: `${import.meta.env.BASE_URL}images/teeth-whitening.png`, title: 'Teeth Whitening', desc: 'Professional whitening treatments for a brilliantly brighter smile in just one visit.', href: '/services#whitening' },
+          { img: `${import.meta.env.BASE_URL}images/treatment-room.png`,  title: 'Dental Implants', desc: 'Permanent, natural-looking tooth replacements that restore your smile and confidence.', href: '/services#implants' },
+          { img: `${import.meta.env.BASE_URL}images/xray.png`,            title: 'Digital X-Rays',  desc: 'State-of-the-art digital imaging for accurate diagnosis with minimal radiation.', href: '/services#xray' },
         ].map(s => (
           <a href={s.href} class="service-card card">
             <div class="sc-img-wrap">
@@ -101,7 +101,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="section">
     <div class="container about-split">
       <div class="about-img-side">
-        <img src="/images/team.png" alt="Our dental team" class="about-img" />
+        <img src={`${import.meta.env.BASE_URL}images/team.png`} alt="Our dental team" class="about-img" />
         <div class="about-badge">
           <div class="ab-icon">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">

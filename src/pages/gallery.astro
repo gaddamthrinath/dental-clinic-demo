@@ -1,15 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const base = import.meta.env.BASE_URL;
 const photos = [
-  { src: '/images/hero.png', caption: 'Our Welcoming Reception', tag: 'Clinic' },
-  { src: '/images/treatment-room.png', caption: 'State-of-the-Art Treatment Room', tag: 'Facilities' },
-  { src: '/images/teeth-whitening.png', caption: 'Teeth Whitening Results', tag: 'Results' },
-  { src: '/images/xray.png', caption: 'Advanced Digital Imaging', tag: 'Technology' },
-  { src: '/images/happy-patient.png', caption: 'Happy Patient After Treatment', tag: 'Patients' },
-  { src: '/images/team.png', caption: 'Our Expert Team', tag: 'Team' },
-  { src: '/images/doctor1.png', caption: 'Dr. Sarah Johnson', tag: 'Team' },
-  { src: '/images/doctor2.png', caption: 'Dr. Michael Chen', tag: 'Team' },
+  { src: `${base}images/hero.png`, caption: 'Our Welcoming Reception', tag: 'Clinic' },
+  { src: `${base}images/treatment-room.png`, caption: 'State-of-the-Art Treatment Room', tag: 'Facilities' },
+  { src: `${base}images/teeth-whitening.png`, caption: 'Teeth Whitening Results', tag: 'Results' },
+  { src: `${base}images/xray.png`, caption: 'Advanced Digital Imaging', tag: 'Technology' },
+  { src: `${base}images/happy-patient.png`, caption: 'Happy Patient After Treatment', tag: 'Patients' },
+  { src: `${base}images/team.png`, caption: 'Our Expert Team', tag: 'Team' },
+  { src: `${base}images/doctor1.png`, caption: 'Dr. Sarah Johnson', tag: 'Team' },
+  { src: `${base}images/doctor2.png`, caption: 'Dr. Michael Chen', tag: 'Team' },
 ];
 
 const beforeAfter = [

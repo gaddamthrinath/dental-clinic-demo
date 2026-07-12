@@ -17,7 +17,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="section">
     <div class="container about-split">
       <div>
-        <img src="/images/team.png" alt="Our team" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
+        <img src={`${import.meta.env.BASE_URL}images/team.png`} alt="Our team" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
       </div>
       <div>
         <div class="section-tag">Our Story</div>
@@ -70,8 +70,8 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="grid-2 team-grid">
         {[
-          { img: '/images/doctor1.png', name: 'Dr. Priya Sharma', role: 'Principal Dentist & Cosmetic Specialist', bio: 'BDS (Manipal), MDS Prosthodontics. Over 20 years of experience with a focus on smile transformations and patient comfort.', specialties: ['Cosmetic Dentistry', 'Smile Design', 'Teeth Whitening'] },
-          { img: '/images/doctor2.png', name: 'Dr. Rohan Mehta', role: 'Orthodontist & Implant Specialist', bio: 'BDS (RGUHS), MDS Orthodontics. Award-winning specialist in braces, Invisalign, and dental implant procedures.', specialties: ['Orthodontics', 'Dental Implants', 'Invisalign'] },
+          { img: `${import.meta.env.BASE_URL}images/doctor1.png`, name: 'Dr. Priya Sharma', role: 'Principal Dentist & Cosmetic Specialist', bio: 'BDS (Manipal), MDS Prosthodontics. Over 20 years of experience with a focus on smile transformations and patient comfort.', specialties: ['Cosmetic Dentistry', 'Smile Design', 'Teeth Whitening'] },
+          { img: `${import.meta.env.BASE_URL}images/doctor2.png`, name: 'Dr. Rohan Mehta', role: 'Orthodontist & Implant Specialist', bio: 'BDS (RGUHS), MDS Orthodontics. Award-winning specialist in braces, Invisalign, and dental implant procedures.', specialties: ['Orthodontics', 'Dental Implants', 'Invisalign'] },
         ].map(doc => (
           <div class="doctor-card card">
             <div class="doctor-img-wrap">
@@ -105,7 +105,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="/contact#appointment" class="btn btn--primary" style="margin-top:2rem;">Book Your Visit Today</a>
       </div>
       <div>
-        <img src="/images/happy-patient.png" alt="Happy patient at Bright Smiles" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
+        <img src={`${import.meta.env.BASE_URL}images/happy-patient.png`} alt="Happy patient at Bright Smiles" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
       </div>
     </div>
   </section>
